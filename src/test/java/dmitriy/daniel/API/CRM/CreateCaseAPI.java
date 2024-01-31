@@ -1,0 +1,312 @@
+package dmitriy.daniel.API.CRM;
+
+import Dmitriy.Daniel.models.CRM.CreateCaseForm.DataCase;
+import Dmitriy.Daniel.models.CRM.GetCasesByEmail.CasesByEmailParams;
+import io.restassured.http.ContentType;
+import org.apache.http.HttpStatus;
+
+import org.testng.annotations.Test;
+
+import static Dmitriy.Daniel.Specification.requestCrmApi;
+import static Dmitriy.Daniel.Specification.requestSpec;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+
+public class CreateCaseAPI {
+    private String caseGid;
+    DataCase dataCase = new DataCase();
+
+
+    public void createCase() {
+
+        given()
+                .spec(requestCrmApi)
+                .contentType(ContentType.JSON)
+                .body(dataCase)
+                .when()
+                .post("/v2/cases/create")
+
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body();
+    }
+
+    @Test
+
+    public void createCaseSuccesses() {
+
+        caseGid = given()
+                .spec(requestCrmApi)
+                .contentType(ContentType.JSON)
+                .body(dataCase)
+                .when()
+                .post("/v2/cases/create")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"),
+                        "request.contact_email", equalTo(dataCase.contact_email),
+                        "request.contact_phone", equalTo(dataCase.contact_phone),
+                        "request.category_key", equalTo(dataCase.category_key),
+                        "request.project_key", equalTo(dataCase.project_key),
+                        "request.order_uid", equalTo(dataCase.order_uid),
+                        "request.subject", equalTo(dataCase.subject),
+                        "request.description", equalTo(dataCase.description),
+                        "data.case_gid", equalTo("767713a965f7d3f202cc0e4fa8c1df1e"))
+
+                .extract().path("data.case_gid");
+        System.out.println(caseGid);
+
+    }
+
+    @Test
+    public void createCasesValidationError() {
+        String contact_phone = "+38098342"; // "The format of Contact Phone is invalid."
+        dataCase.setContact_phone(contact_phone);
+        createCase();
+        given()
+                .then()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"),
+                        "errors[0].code", equalTo("21301"),
+                        "errors[0].detail", equalTo("Validation error"));
+
+    }
+
+
+    @Test(dependsOnMethods = {"createCaseSuccesses"})
+    public void getCaseSuccess() {
+        given()
+                .spec(requestCrmApi)
+                .param("gid", caseGid)
+
+                .when()
+                .get("/v2/case/get")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"),
+                        "data.gid", equalTo(caseGid));//767713a965f7d3f202cc0e4fa8c1df1e
+    }
+
+    @Test
+//    @DisplayName("Case with this gid not found.")
+    public void caseWithThisGIDnotFound() {
+
+        given()
+                .spec(requestCrmApi)
+                .param("gid", "ffa95a370fbf3216936e33398d4a70f5")
+                .when()
+                .get("/v2/case/get")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"))
+                .body("errors[0].detail", equalTo("Validation error"))
+                .body("errors[0].code", equalTo("21304"));
+
+    }
+
+    @Test
+    public void getCasesByEmail() {
+        CasesByEmailParams casesByEmail = new CasesByEmailParams();
+        given()
+                .spec(requestCrmApi)
+                .param("contact_email", dataCase.contact_email)
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/get-list-by-email")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"),
+                        "data[0].order_uid", not(empty()),
+                        "data[0].project_name", equalTo("OVAGO"),
+                        "data[0].status_name", equalTo("New"),
+                        "data[0].category_key", equalTo("exchange"));
+
+    }
+
+    @Test
+    public void getCasesByEmailValidationError() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_email", "")
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/get-list-by-email")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"))
+                .body("errors[0].detail", equalTo("Validation error"))
+                .body("errors[0].code", equalTo("21303"));
+    }
+
+    @Test
+    public void getCasesByPhoneValidationError() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_phone", "")
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/get-list-by-phone")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"))
+                .body("errors[0].detail", equalTo("Validation error"))
+                .body("errors[0].code", equalTo("21303"));
+    }
+    @Test
+    public void getCasesGidListByEmail() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_email", dataCase.contact_email)
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/find-list-by-email")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"));
+
+    }
+    @Test
+    public void getCasesByPhone() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_phone", dataCase.contact_phone)
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/get-list-by-phone")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"),
+                        "data", not(empty()));
+    }
+
+
+    @Test
+    public void getCasesGidListByEmailValidationError() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_email", "")
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/find-list-by-email")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"))
+                .body("errors[0].detail", equalTo("Validation error"))
+                .body("errors[0].code", equalTo("21303"));
+    }
+
+    @Test
+    public void getCasesGidListByPhone() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_phone", dataCase.contact_phone)
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/find-list-by-phone")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"));
+    }
+
+    @Test
+    public void getCasesGIDlistByPhoneValidationError() {
+        given()
+                .spec(requestCrmApi)
+                .contentType(ContentType.JSON)
+
+                .param("contact_phone", "")
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/find-list-by-phone")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"))
+                .body("errors[0].detail", equalTo("Validation error"))
+                .body("errors[0].code", equalTo("21303"));
+    }
+}
