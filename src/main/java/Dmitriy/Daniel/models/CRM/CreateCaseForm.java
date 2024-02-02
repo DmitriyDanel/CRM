@@ -1,6 +1,5 @@
 package Dmitriy.Daniel.models.CRM;
 
-import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ public class CreateCaseForm {
     @Data
     public static class DataCase {
 
-        public String contact_phone = "+380983421111";
+        public String contact_phone = "+380983429271";
         public String contact_email = "danelukdv1@gmail.com";
         public String category_key = "Exchange";
         public String category_id = null;

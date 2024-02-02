@@ -1,11 +1,11 @@
-package dmitriy.daniel.CRM.pages;
+package Dmitriy.Daniel.pages;
+
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.testng.Assert;
 
-import static com.codeborne.selenide.Selenide.sleep;
 
 //AddEmail_________________________________________________________________Client Info
 
@@ -115,7 +115,7 @@ public class CasesViewPage {
         this.formPhonNumber = page.locator("#casecommunicationform-c_phone_number_id");
         this.btnSendSMS = page.locator("#sms-input-box > div.btn-wrapper > button");
         this.SMSInternalNoteField = page.locator("#casepreviewsmsform-internalnote");
-        this.btnModalSendSMS = page.locator("#w10 > div.btn-wrapper.text-center > button");
+        this.btnModalSendSMS = page.locator("#w9 > div.btn-wrapper.text-center > button");
 
         //SendEmail________________________________________________________Communication
         this.formEmailTemplate = page.locator("#c_email_tpl_key");
@@ -190,6 +190,7 @@ public class CasesViewPage {
 
         return this;
     }
+
     public CasesViewPage assertGeneralInfoUpdateNegativeScenario() {
         Assert.assertTrue(errorSummaryUpdateCase.textContent().contains("Booking ID is invalid."));
 
@@ -225,34 +226,52 @@ public class CasesViewPage {
         Assert.assertTrue(fieldsAgent.textContent().contains("dmitriy.daniel.CX"));
         return this;
     }
-    public CasesViewPage assertUpdateClientInfo(){
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(2) > td").textContent().contains("Jack"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(3) > td").textContent().contains("Capt"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(4) > td").textContent().contains("Sparrow"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(6) > td > span").textContent().contains("uk-UA"));
+
+    public CasesViewPage assertUpdateClientInfo() {
+        Assert.assertTrue(page.locator("#w3 > tbody > tr:nth-child(2) > td").textContent().contains("Jack"));
+        Assert.assertTrue(page.locator("#w3 > tbody > tr:nth-child(3) > td").textContent().contains("Capt"));
+        Assert.assertTrue(page.locator("#w2 > a").textContent().contains("S*****w"));
+        Assert.assertTrue(page.locator("#w3 > tbody > tr:nth-child(6) > td > span").textContent().contains("uk-UA"));
         Assert.assertTrue(page.locator("[class=js_marketing_country]").textContent().contains("AD"));
         return this;
     }
 
-    public CasesViewPage assertCaseAddPhoneToClientInfoBlock(){
-        Assert.assertTrue(page.locator("#w3").textContent().contains("+380983429271"));
+    public CasesViewPage assertUpdateClientWithRequiredAndOptionalFieldsValidData() {
+        Assert.assertTrue(page.locator("#w3 > tbody > tr:nth-child(2) > td").textContent().contains("Black"));
+        Assert.assertTrue(page.locator("#w3 > tbody > tr:nth-child(3) > td").textContent().contains("Captain"));
+        Assert.assertTrue(page.locator("#w2 > a").textContent().contains("***w"));
         return this;
     }
 
-    public CasesViewPage assertCaseAddPhoneToClientInfoBlockNegativeScenario(){
-        Assert.assertTrue(page.locator("#w0 > div.form-group.field-casesaddphoneform-phone.required.has-error > div.help-block").textContent().contains("The format of Phone is invalid."));
+    public CasesViewPage assertUpdateClientOnlyFirstNameFields() {
+        page.waitForTimeout(2000);
+        Assert.assertTrue(page.locator("#pjax-client-info > div > div.x_content > div > div.col-md-5").textContent().contains("Gold"));
         return this;
     }
-    public CasesViewPage assertAddEmailToClientInfoBlock(){
-        Assert.assertTrue(page.locator("#w3").textContent().contains("AutoTest@mail.com"));
+
+    public CasesViewPage assertCaseAddPhoneToClientInfoBlock() {
+        Assert.assertTrue(page.locator("#pjax-client-info > div > div.x_content").textContent().contains("+380******271"));
         return this;
     }
-    public CasesViewPage assertAddEmailToClientInfoBlockNegativeScenario(){
+
+    public CasesViewPage assertCaseAddPhoneToClientInfoBlockNegativeScenario() {
+        Assert.assertTrue(page.locator("#modalCaseSm > div > div").textContent().contains("The format of Phone is invalid."));
+        return this;
+    }
+
+    public CasesViewPage assertAddEmailToClientInfoBlock() {
+//        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add********@mail.com")).click();
+        Assert.assertTrue(page.locator("#w6").textContent().contains("Add********@mail.com"));
+        return this;
+    }
+
+    public CasesViewPage assertAddEmailToClientInfoBlockNegativeScenario() {
         Assert.assertTrue(page.locator("#w0 > div.form-group.field-casesaddemailform-email.required.has-error > div.help-block").textContent().contains("Email is not a valid email address."));
         reload();
         return this;
     }
-    public CasesViewPage assertStatusHistory(){
+
+    public CasesViewPage assertStatusHistory() {
         Assert.assertTrue(page.locator("#w0 > table > tbody > tr > td:nth-child(3) > span").textContent().contains("New"));
         Assert.assertTrue(page.locator("#w0 > table > tbody > tr > td:nth-child(9)").textContent().contains("Created by web"));
         Assert.assertTrue(page.locator("#w0 > table > tbody > tr > td:nth-child(10)").textContent().contains("dmitriy.daniel.admin"));
@@ -260,14 +279,16 @@ public class CasesViewPage {
         reload();
         return this;
     }
-    public CasesViewPage assertAgentCanSendToSMS(){
+
+    public CasesViewPage assertAgentCanSendToSMS() {
         reload();
-        Assert.assertTrue(page.locator("#w0 > tbody > tr:nth-child(1) > td > span.badge.badge-success").textContent().contains("Open"));
+        Assert.assertTrue(page.locator("#list-wrapper > div.chat__message.chat__message--system.chat__message--sms > div.chat__message-heading > div.chat__sender").textContent().contains("SMS from "));
         return this;
     }
-    public CasesViewPage assertAgentCanSentToEmail(){
+
+    public CasesViewPage assertAgentCanSentToEmail() {
         reload();
-        Assert.assertTrue(page.locator("#w0 > tbody > tr:nth-child(1) > td > span.badge.badge-success").textContent().contains("Open"));
+        Assert.assertTrue(page.locator("#list-wrapper > div.chat__message.chat__message--system.chat__message--sms > div.chat__message-heading > div.chat__sender").textContent().contains("Open"));
         return this;
     }
 
@@ -278,17 +299,21 @@ public class CasesViewPage {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Logs")).click();
         return this;
     }
-   public CasesViewPage ckickBtnStatusHistory() {
-       page.getByText("Status History (1)").click();
+
+    public CasesViewPage ckickBtnStatusHistory() {
+        page.getByText("Status History (1)").click();
         return this;
     }
+
     //
-   public CasesViewPage ckickBtnChangeStatus() {
+    public CasesViewPage ckickBtnChangeStatus() {
         btnChangeStatus.click();
         return this;
     }
 
     public CasesViewPage reload() {
+
+        page.reload();
         page.reload();
         return this;
     }
@@ -302,6 +327,7 @@ public class CasesViewPage {
         fieldStatusInChangeCaseStatusModal.selectOption(value);
         return this;
     }
+
     public CasesViewPage changefieldSentToEmail(String value) {
         fieldSentToEmail.selectOption(value);
         return this;
@@ -330,13 +356,14 @@ public class CasesViewPage {
 
     public CasesViewPage addEmailFormEmail(String value) {
         inModalFillAddEmail.type(value);
-        sleep(1500);
+        page.waitForTimeout(2000);
         return this;
     }
 
     public CasesViewPage btnAddEmailInAddEmailForm() {
         inModalBtnAddEmail.click();
-        sleep(1500);
+//        Selenide.sleep(1500);
+        page.waitForTimeout(2000);
         return this;
     }
 
@@ -346,7 +373,7 @@ public class CasesViewPage {
     }
 
     public CasesViewPage addPhoneInForm(String value) {
-        addPhoneInForm.type(value);
+        addPhoneInForm.fill(value);
         return this;
     }
 
@@ -509,7 +536,9 @@ public class CasesViewPage {
 
     public CasesViewPage setCategoryToUpdateCaseForm(String value) {
         inputCategoryToUpdateCaseForm.click();
-        sleep(2000);
+        page.locator("#select2-categoryId-container");
+//        Selenide.sleep(2000);
+        page.waitForTimeout(5000);
         page.getByRole(AriaRole.SEARCHBOX).fill(value);
         page.getByRole(AriaRole.SEARCHBOX).press("Enter");
         return this;
@@ -532,12 +561,14 @@ public class CasesViewPage {
 
     public CasesViewPage clickBtnUpdateGeneralInfoBlock() {
         btnUpdateGeneralInfoBlock.click();
-        sleep(5000);
+//        Selenide.sleep(5000);
+        page.waitForTimeout(5000);
         return this;
     }
+
     public CasesViewPage clickBtnCloseUpdateCase() {
         btnCloseUpdateCase.click();
-           return this;
+        return this;
     }
 
     //Fiels--------------------------------------------------------------------------------Update
@@ -563,7 +594,6 @@ public class CasesViewPage {
 
 
 }
-
 
 
 //

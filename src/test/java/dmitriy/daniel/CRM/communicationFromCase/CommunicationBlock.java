@@ -2,22 +2,23 @@ package dmitriy.daniel.CRM.communicationFromCase;
 
 import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesViewPage;
-import Dmitriy.Daniel.pages.SiteLoginPage;
-
-import com.microsoft.playwright.Page;
-import dmitriy.daniel.API.CRM.CreateCaseAPI;
 import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import io.qameta.allure.Story;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-public class FlowCommunicationBlock {
-    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
-    Page page = browserInitialization.getPage();
+public class CommunicationBlock {
+    private BrowserInitialization browserInitialization;
+    private CasesViewPage casesViewPage;
+    private CreateCaseManually createCaseManually;
 
-    CasesViewPage casesViewPage = new CasesViewPage(page);
-    CreateCaseManually createCaseManually = new CreateCaseManually();
-
+    @BeforeMethod
+    public void setUp() {
+        browserInitialization = BrowserInitialization.getInstance();
+        createCaseManually = new CreateCaseManually();
+        createCaseManually.setUpBrowser();
+        casesViewPage = browserInitialization.casesViewPage;
+    }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1359 Verify that agent can send SMS from Case")
     public void AgentCanSendSmsFromCase(){
@@ -55,3 +56,8 @@ public class FlowCommunicationBlock {
     }
 }
 
+//    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
+//    Page page = browserInitialization.getPage();
+//
+//    CasesViewPage casesViewPage = new CasesViewPage(page);
+//    CreateCaseManually createCaseManually = new CreateCaseManually();

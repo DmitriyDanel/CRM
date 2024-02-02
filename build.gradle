@@ -1,9 +1,54 @@
 plugins {
     id 'java'
+    id("io.qameta.allure") version '2.11.2'
+    id 'java-library'
+
 }
 
 group = 'Dmitriy.Daniel'
 version = '1.0-SNAPSHOT'
+
+allure {
+    version.set("2.19.0")
+    adapter {
+        // Configure version for io.qameta.allure:allure-* adapters
+        // It defaults to allure.version
+        allureJavaVersion.set("2.19.0")
+        aspectjVersion.set("1.9.5")
+
+        autoconfigure.set(true)
+        autoconfigureListeners.set(true)
+        aspectjWeaver.set(true)
+
+        // By default, categories.json is detected in src/test/resources/../categories.json,
+        // However, it would be better to put the file in a well-known location and configure it explicitly
+        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
+        frameworks {
+            junit5 {
+                // Defaults to allureJavaVersion
+                adapterVersion.set("2.19.0")
+                enabled.set(true)
+                // Enables allure-junit4 default test listeners via META-INF/services/...
+                autoconfigureListeners.set(true)
+            }
+            junit4 {
+                // same as junit5
+            }
+            testng {
+                // same as junit5
+            }
+            spock
+            cucumberJvm
+            // Alternative syntax: cucumberJvm(2) {...}
+            cucumber2Jvm
+            cucumber3Jvm
+            cucumber4Jvm
+            cucumber5Jvm
+            cucumber6Jvm
+        }
+    }
+}
+
 
 repositories {
     mavenCentral()
@@ -12,8 +57,80 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.microsoft.playwright:playwright:1.36.0'
+    testImplementation 'org.testng:testng:7.8.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.2'
+
+    testImplementation 'io.rest-assured:rest-assured:5.3.2'
+    testImplementation 'io.rest-assured:json-path:5.3.2'
+    testImplementation 'io.rest-assured:xml-path:5.3.2'
+
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'com.codeborne:selenide:6.18.0'
 }
 
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    compileOnly 'org.aspectj:aspectjrt:1.9.19'
+    compileOnly 'org.aspectj:aspectjweaver:1.9.19'
+
+    implementation group: 'javax.json', name: 'javax.json-api', version: '1.1.4'
+    implementation group: 'org.testng', name: 'testng', version: '7.7.1'
+    implementation 'org.testng:testng:7.8.0'
+
+
+    implementation 'io.rest-assured:rest-assured:5.3.0'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
+    implementation 'org.jsoup:jsoup:1.15.4'
+    implementation 'com.microsoft.playwright:playwright:1.34.0'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation 'org.slf4j:slf4j-reload4j:2.0.7'
+    implementation 'javax.money:money-api:1.1'
+    implementation 'org.javamoney:moneta:1.4.2'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.13.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+    implementation 'org.awaitility:awaitility:4.2.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-text:1.10.0'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.28'
+    implementation 'org.apache.pdfbox:pdfbox-tools:2.0.28'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.20'
+    implementation 'org.jetbrains.kotlin.plugin.lombok:org.jetbrains.kotlin.plugin.lombok.gradle.plugin:1.8.20'
+    implementation 'org.springframework:spring-context:6.0.9'
+    testImplementation 'org.springframework:spring-test:6.0.9'
+    implementation 'org.assertj:assertj-core:3.24.2'
+    implementation 'com.epam.reportportal:agent-java-testng:5.3.1'
+    implementation 'org.yaml:snakeyaml:1.33'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        maven {
+            url 'https://repo.maven.apache.org/maven2/'
+        }
+        maven {
+            url "https://plugins.gradle.org/m2"
+        }
+        maven {
+            url "https://repo1.maven.org/maven2/"
+        }
+    }
+}
 test {
-    useJUnitPlatform()
+    useTestNG()
+//    useJUnitPlatform()
+    systemProperties(System.getProperties()) //DbaseUrl="https://api.crm.stage.travel-dev.com" -Dbrowser=CHROME
 }

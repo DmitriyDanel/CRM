@@ -1,31 +1,36 @@
 package dmitriy.daniel.CRM.caseStatusChange;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+
+import Dmitriy.Daniel.config.BrowserInitialization;
+import Dmitriy.Daniel.pages.CasesViewPage;
 import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
-import dmitriy.daniel.CRM.communicationFromCase.FlowCommunicationBlock;
-import dmitriy.daniel.CRM.pages.CasesViewPage;
-import io.qameta.allure.Step;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Story;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+public class ChangeStatus  {
+    private BrowserInitialization browserInitialization;
+    private CasesViewPage casesViewPage;
+    private CreateCaseManually createCaseManually;
 
-public class NewToStatusAfterSendingCommunicationByEmail {
+    @BeforeMethod
+    public void setUp() {
+        browserInitialization = BrowserInitialization.getInstance();
+        createCaseManually = new CreateCaseManually();
+        createCaseManually.setUpBrowser();
+        casesViewPage = browserInitialization.casesViewPage;
+    }
 
-    Playwright playwright = Playwright.create();
-    Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-    Page page = browser.newPage();
 
-    CasesViewPage casesViewPage = new CasesViewPage(page);
-
-
-
-    @Step("https://traveldev.atlassian.net/browse/TEST-4409  The case status is changed from New to status Open after communication by Email")
-    private void changeStatusAfterEmailCommunication() {
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-4409  The case status is changed from New to status Open after communication by Email")
+    public void changedFromNewToStatusOpenAfterCommunicationByEmail() {
+        createCaseManually.createNewCase();
+        changeStatusAfterEmailCommunication();
+    }
+    public void changeStatusAfterEmailCommunication() {
         casesViewPage.setToEmailValue("1")
                 .setValueInFormEmailTemplate("add_infant")
-                .clickToEmailRadioBtn("danelukdv@gmail.com")
+                .clickToEmailRadioBtn("dan******@*mail.com")
                 .clickToPreviewAndSendEmailBtn()
                 .clickToInternalNoteFieldEmail("The agent can send email in Communication Block")
                 .clickBtnSendEmail()
@@ -33,8 +38,13 @@ public class NewToStatusAfterSendingCommunicationByEmail {
                 .assertChangedFromNewToStatusOpen();
     }
 
-    @Step("https://traveldev.atlassian.net/browse/TEST-4544  The user is able to assign the case to another agent when changing the case status to Pending")
-    private void assignCaseToAnotherAgent() {
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-4544  The user is able to assign the case to another agent when changing the case status to Pending")
+    public void ChangingTheCaseStatusToPending() {
+        createCaseManually.createNewCase();
+        assignCaseToAnotherAgent();
+    }
+    public void assignCaseToAnotherAgent() {
         casesViewPage.ckickBtnChangeStatus()
                 .setStatusInChangeCaseStatusModal("1")
                 .setEmployeeInChangeCaseStatusModal("800")
@@ -43,18 +53,21 @@ public class NewToStatusAfterSendingCommunicationByEmail {
                 .assertChangedFromOpenToStatusPending();
     }
 
-    @Step("https://traveldev.atlassian.net/browse/TEST-4429  The case status is changed to business status Solved")
-    private void changeStatusToSolved() {
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-4429  The case status is changed to business status Solved")
+    public void changedToBusinessStatusSolved() {
+        createCaseManually.createNewCase();
+        changeStatusAfterEmailCommunication();
+        changeStatusToSolved();
+    }
+    public void changeStatusToSolved() {
         casesViewPage.ckickBtnChangeStatus()
                 .setStatusInChangeCaseStatusModal("2")
+                .changefieldSentToEmail("danelukdv@gmail.com")
                 .setLanguageInChangeCaseStatusModal("en-US")
                 .ckickInModalBtnChangeStatus()
                 .reload()
                 .assertChangedFromNewToStatusSolved();
 
     }
-    //        casesViewPage.clickBtnClose();
-//        page.pause();
-//
-//        assertThat(page.locator("#w0 > tbody > tr:nth-child(1) > td > span.badge.badge-danger")).hasText("Closed");
 }

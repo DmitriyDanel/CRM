@@ -1,16 +1,14 @@
-package dmitriy.daniel.CRM.pages;
+package Dmitriy.Daniel.pages;
 
-import com.github.javafaker.Faker;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import org.testng.Assert;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class CasesCreatePage {
     private final Page page;
-    private final Faker faker;
     private final Locator webFormProjectID;
     private final Locator webFormDepID;
     private final Locator selectionCategoryID;
@@ -21,12 +19,6 @@ public class CasesCreatePage {
     private final Locator subjectField;
     private final Locator descriptionField;
     private final Locator clickBtnCreateCase;
-
-    private final String firstName;
-    private final String midleName;
-    private final String lastName;
-    private final String contactEmail;
-
 
     public CasesCreatePage(Page page) {
         this.page = page;
@@ -43,16 +35,13 @@ public class CasesCreatePage {
         this.descriptionField = page.locator("#casescreatebywebform-description");
         this.clickBtnCreateCase = page.locator("#create-case-form-submit");
 
-
-        this.faker = new Faker();
-        this.firstName = faker.name().firstName();
-        this.midleName = faker.name().name();
-        this.lastName = faker.name().lastName();
-        this.contactEmail = faker.internet().emailAddress();
-
-
     }
 
+    public CasesCreatePage assertValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty() {
+        Assert.assertTrue(page.locator("#client-phone-or-email > div.form-group.field-casescreatebywebform-clientphone.has-error > div.help-block").textContent().contains("Phone or Email cannot be blank."));
+        Assert.assertTrue(page.locator("#client-phone-or-email > div.form-group.field-casescreatebywebform-clientemail.has-error > div").textContent().contains("Email or Phone cannot be blank."));
+        return this;
+    }
 
     public CasesCreatePage openFormProjectID() {
         webFormProjectID.click();
@@ -75,16 +64,11 @@ public class CasesCreatePage {
     }
 
     public CasesCreatePage selectionWebFormCategoryID(String value) {
-//        selectionCategoryID.click();
-//        sleep(5000);
-//        page.getByRole(AriaRole.SEARCHBOX).type(value);
-//        sleep(5000);
-//        page.getByRole(AriaRole.SEARCHBOX).press("Enter");
-
+        page.waitForTimeout(1500);
         selectionCategoryID.click();
-        selectionCategoryID.type(value);
-        sleep(5000);
-        selectionCategoryID.press("Enter");
+        page.getByRole(AriaRole.SEARCHBOX).type(value);
+        page.waitForTimeout(1500);
+        page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName(value)).press("Enter");
         return this;
     }
 

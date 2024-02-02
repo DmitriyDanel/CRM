@@ -1,16 +1,22 @@
-package dmitriy.daniel.CRM;
+package dmitriy.daniel.CRM.loginForm;
 
 import Dmitriy.Daniel.config.BrowserInitialization;
-
 import Dmitriy.Daniel.pages.SiteLoginPage;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginForm  {
-    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
+    private BrowserInitialization browserInitialization;
+    private Page page; // Добавляем переменную page в класс
 
-    Page page = browserInitialization.getPage();
+    @BeforeMethod
+    public void setUp() {
+        browserInitialization = BrowserInitialization.getInstance();
+        browserInitialization.setup();
+        page = browserInitialization.page;
+    }
     @Test
     public void logInUser () {
 
@@ -25,4 +31,5 @@ public class LoginForm  {
         Assert.assertTrue(page.locator("[class=\"site-index\"]").textContent().contains(" Home Page"));
 
     }
+
 }

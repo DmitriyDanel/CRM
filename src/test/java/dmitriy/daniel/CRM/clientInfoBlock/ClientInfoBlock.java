@@ -1,92 +1,156 @@
 package dmitriy.daniel.CRM.clientInfoBlock;
 
-import com.github.javafaker.Faker;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
-import dmitriy.daniel.CRM.pages.CasesViewPage;
-import dmitriy.daniel.CRM.pages.SiteLoginPage;
+import Dmitriy.Daniel.config.BrowserInitialization;
+import Dmitriy.Daniel.pages.CasesViewPage;
+import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
+import io.qameta.allure.Story;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.Assert;
-
-import java.util.Locale;
 
 public class ClientInfoBlock {
 
+    private BrowserInitialization browserInitialization;
+    private CasesViewPage casesViewPage;
+    private CreateCaseManually createCaseManually;
 
-    Playwright playwright = Playwright.create();
-    Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-    Page page = browser.newPage();
-    CasesViewPage casesViewPage = new CasesViewPage(page);
-    SiteLoginPage siteLoginPage = new SiteLoginPage(page);
-
-    Faker faker = new Faker(new Locale("en-US"));
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String middleName = faker.name().name();
-    String clientEmail = faker.internet().emailAddress();
-    String clientPhone = faker.phoneNumber().phoneNumber();
-
-
-    @Test
-    //("Add Email To Client Info Block")
-    public void AddEmailToClientInfoBlock() {
-
-        page.navigate("https://crm.stage.travel-dev.com/cases/view/f243782783e3a8f4955c4188b57c4a91");
-        siteLoginPage.logInUser();
-
-        casesViewPage
-                .clickBtnAddEmail()
-                .addEmailFormEmail("AutoTest@mail.com")
-                .btnAddEmailInAddEmailForm();
-
-        Assert.assertTrue(page.locator("#w3").textContent().contains("AutoTest@mail.com"));
+    @BeforeMethod
+    public void setUp() {
+        browserInitialization = BrowserInitialization.getInstance();
+        createCaseManually = new CreateCaseManually();
+        createCaseManually.setUpBrowser();
+        casesViewPage = browserInitialization.casesViewPage;
     }
     @Test
-    //("Add Client Phone in Info Block")
-
-    public void CaseAddPhoneToClientInfoBlock() {
-        page.navigate("https://crm.stage.travel-dev.com/cases/view/f243782783e3a8f4955c4188b57c4a91");
-        siteLoginPage.logInUser();
-
-
-        casesViewPage
-                .clickBtnAddPhone()
-                .addPhoneInForm("+380950950955")
-                .clickInModalBtnAddPhone();
-
-        page.reload();//refresh page
-
-        Assert.assertTrue(page.locator("#w3").textContent().contains("+380950950955"));
+    @Story("https://traveldev.atlassian.net/browse/TEST-1742  'Update Client' with required and optional fields (+Locale and Marketing Country)")
+    public void updateClientWithRequiredAndOptionalFieldsLocaleAndMarketing() {
+        createCaseManually.createNewCase();
+        updateClientWithRequiredAndOptionalFields();
     }
 
-
-    @Test()
-    //("Update Client Info")
-       public void UpdateClientInfo() {
-
-        page.navigate("https://crm.stage.travel-dev.com/cases/view/01105f121721e37b131aea229d829854");
-        siteLoginPage.logInUser();
-
-        casesViewPage
-                .clickBtnClientUpdate()
+    public void updateClientWithRequiredAndOptionalFields() {
+        casesViewPage.clickBtnClientUpdate()
                 .setClientUpdateFormFirstName("Jack")
                 .setClientUpdateFormMiddleName("Capt")
                 .setClientUpdateFormLastName("Sparrow")
                 .setValueLocale("uk-UA")
                 .setValueMarketingCountry("AD")
-                .clickModalBtmUpdate();
-
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(2) > td").textContent().contains("Jack"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(3) > td").textContent().contains("Capt"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(4) > td").textContent().contains("Sparrow"));
-        Assert.assertTrue(page.locator("#w2 > tbody > tr:nth-child(6) > td > span").textContent().contains("uk-UA"));
-        Assert.assertTrue(page.locator("[class=js_marketing_country]").textContent().contains("AD"));
+                .clickModalBtmUpdate()
+                .reload()
+                .assertUpdateClientInfo();
 
     }
+
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1741  'Update Client' with required and optional fields - valid data")
+    public void updateClientWithRequiredAndOptionalFieldsValidData() {
+        createCaseManually.createNewCase();
+        updateClientInfoBlock();
+    }
+
+    public void updateClientInfoBlock() {
+        casesViewPage.clickBtnClientUpdate()
+                .setClientUpdateFormFirstName("Black")
+                .setClientUpdateFormMiddleName("Captain")
+                .setClientUpdateFormLastName("Snow")
+                .clickModalBtmUpdate()
+                .reload()
+                .assertUpdateClientWithRequiredAndOptionalFieldsValidData();
+
+    }
+
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1736  'Update Client' with only required field - valid data")
+    public void updateClientWithOnlyRequiredFields() {
+        createCaseManually.createNewCase();
+        updateClientOnlyFirstNameFields();
+
+    }
+
+    public void updateClientOnlyFirstNameFields() {
+        casesViewPage.clickBtnClientUpdate()
+                .setClientUpdateFormFirstName("Gold")
+                .clickModalBtmUpdate()
+                .reload()
+                .assertUpdateClientOnlyFirstNameFields();
+
+    }
+
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1744  Adding email (valid data)")
+    public void addEmailToClientInfoBlockValidData() {
+        createCaseManually.createNewCase();
+        addEmailToClientInfoBlock();
+    }
+
+    public void addEmailToClientInfoBlock() {
+        casesViewPage
+                .clickBtnAddEmail()
+                .addEmailFormEmail("AddAutoTest@mail.com")
+                .btnAddEmailInAddEmailForm()
+                .reload()
+                .assertAddEmailToClientInfoBlock();
+    }
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1745  Email - Verify validation message for invalid data")
+    public void addEmailValidationMessageForInvalidData() {
+        createCaseManually.createNewCase();
+        addEmailToClientInfoBlockNegativeScenario();
+    }
+
+    public void addEmailToClientInfoBlockNegativeScenario() {
+        casesViewPage
+                .clickBtnAddEmail()
+                .addEmailFormEmail("test@techorkcom")
+                .btnAddEmailInAddEmailForm()
+                .assertAddEmailToClientInfoBlockNegativeScenario()
+                .reload();
+
+    }
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1753 Case - Add phone")
+    public void caseAddPhone() {
+        createCaseManually.createNewCase();
+        caseAddPhoneToClientInfoBlock();
+    }
+
+    public void caseAddPhoneToClientInfoBlock() {
+        casesViewPage
+                .clickBtnAddPhone()
+                .addPhoneInForm("+380983429271")
+                .clickInModalBtnAddPhone()
+                .reload()
+                .assertCaseAddPhoneToClientInfoBlock();
+    }
+
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1755  [Case] Phone number - Verify validation message for invalid data")
+    public void caseAddPhoneNegativeScenario() {
+        createCaseManually.createNewCase();
+        caseAddPhoneToClientInfoBlockNegativeScenario();
+    }
+
+    public void caseAddPhoneToClientInfoBlockNegativeScenario() {
+        casesViewPage
+                .clickBtnAddPhone()
+                .addPhoneInForm("1888888888")
+                .clickInModalBtnAddPhone()
+                .assertCaseAddPhoneToClientInfoBlockNegativeScenario();
+
+
+    }
+
 }
 
 
+//    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
+//    Page page = browserInitialization.getPage();
+//
+//    CasesViewPage casesViewPage = new CasesViewPage(page);
+//    CreateCaseManually createCaseManually = new CreateCaseManually();
 
 

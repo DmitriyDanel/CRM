@@ -4,7 +4,6 @@ import Dmitriy.Daniel.models.CRM.CreateCaseForm.DataCase;
 import Dmitriy.Daniel.models.CRM.GetCasesByEmail.CasesByEmailParams;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-
 import org.testng.annotations.Test;
 
 import static Dmitriy.Daniel.Specification.requestCrmApi;
@@ -18,20 +17,7 @@ public class CreateCaseAPI {
     DataCase dataCase = new DataCase();
 
 
-    public void createCase() {
 
-        given()
-                .spec(requestCrmApi)
-                .contentType(ContentType.JSON)
-                .body(dataCase)
-                .when()
-                .post("/v2/cases/create")
-
-                .then()
-                .spec(requestSpec)
-                .assertThat()
-                .log().body();
-    }
 
     @Test
 
@@ -62,22 +48,6 @@ public class CreateCaseAPI {
 
                 .extract().path("data.case_gid");
         System.out.println(caseGid);
-
-    }
-
-    @Test
-    public void createCasesValidationError() {
-        String contact_phone = "+38098342"; // "The format of Contact Phone is invalid."
-        dataCase.setContact_phone(contact_phone);
-        createCase();
-        given()
-                .then()
-                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
-
-                .body("errors[0].status", equalTo("422"),
-                        "errors[0].code", equalTo("21301"),
-                        "errors[0].detail", equalTo("Validation error"));
-
     }
 
 
@@ -194,6 +164,7 @@ public class CreateCaseAPI {
                 .body("errors[0].detail", equalTo("Validation error"))
                 .body("errors[0].code", equalTo("21303"));
     }
+
     @Test
     public void getCasesGidListByEmail() {
         given()
@@ -216,6 +187,7 @@ public class CreateCaseAPI {
                         "message", equalTo("OK"));
 
     }
+
     @Test
     public void getCasesByPhone() {
         given()
@@ -267,7 +239,7 @@ public class CreateCaseAPI {
     public void getCasesGidListByPhone() {
         given()
                 .spec(requestCrmApi)
-                .param("contact_phone", dataCase.contact_phone)
+                .param("contact_phone", "+380983429271")
                 .param("active_only", 1)
                 .param("department_key", dataCase.category_key)
                 .param("project_key", dataCase.project_key)
@@ -308,5 +280,28 @@ public class CreateCaseAPI {
                 .body("errors[0].status", equalTo("422"))
                 .body("errors[0].detail", equalTo("Validation error"))
                 .body("errors[0].code", equalTo("21303"));
+    }
+
+    @Test
+    public void createCasesValidationError() {
+
+        dataCase.setContact_phone("+38098342927"); // "The format of Contact Phone is invalid."
+        given()
+                .spec(requestCrmApi)
+                .contentType(ContentType.JSON)
+                .body(dataCase)
+                .when()
+                .post("/v2/cases/create")
+
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("errors[0].status", equalTo("422"),
+                        "errors[0].code", equalTo("21301"),
+                        "errors[0].detail", equalTo("Validation error"));
+
     }
 }

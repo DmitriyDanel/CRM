@@ -1,13 +1,15 @@
-package dmitriy.daniel.CRM.pages;
+package Dmitriy.Daniel.pages;
 
-import com.microsoft.playwright.*;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
 public class SiteLoginPage {
 
     private final Page page;
-    private final Locator UserName;
+    private final Locator UserName ;
     private final Locator Password;
     private final Locator LoginBtn;
+
 
     public SiteLoginPage(Page page) {
         this.page = page;
@@ -18,7 +20,7 @@ public class SiteLoginPage {
     }
 
     public SiteLoginPage setUserName() {
-        UserName.fill("dmitriy.daniel.admin");//
+        UserName.fill("dmitriy.daniel.admin");
         return this;
     }
     public SiteLoginPage setPassword() {
@@ -38,6 +40,10 @@ public class SiteLoginPage {
                 .setPassword()
                 .cliclLoginBtn();
         return this;
+    }
+    public void logOutUser(){
+        page.locator("body > div.container.body > div > div.top_nav > div > nav > ul > li.nav-item.dropdown.open.show").dblclick();
+        page.locator("body > div.container.body > div > div.top_nav > div > nav > ul > li.nav-item.dropdown.open.show > ul > li:nth-child(2) > a").click();
     }
 }
 

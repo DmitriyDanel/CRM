@@ -1,39 +1,33 @@
 package dmitriy.daniel.CRM.generalInfoBlock;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
-import dmitriy.daniel.CRM.pages.CasesViewPage;
-import dmitriy.daniel.CRM.pages.SiteLoginPage;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import Dmitriy.Daniel.config.BrowserInitialization;
+import Dmitriy.Daniel.pages.CasesViewPage;
+import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
+import io.qameta.allure.Story;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
-public class UpdateGeneralInfoBlock{
-    Playwright playwright = Playwright.create();
-    Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-    Page page = browser.newPage();
-    CasesViewPage casesViewPage = new CasesViewPage(page);
-    SiteLoginPage siteLoginPage = new SiteLoginPage(page);
+public class  UpdateGeneralInfoBlock  {
+    private BrowserInitialization browserInitialization;
+    private CasesViewPage casesViewPage;
+    private CreateCaseManually createCaseManually;
 
+    @BeforeMethod
+    public void setUp() {
+        browserInitialization = BrowserInitialization.getInstance();
+        createCaseManually = new CreateCaseManually();
+        createCaseManually.setUpBrowser();
+        casesViewPage = browserInitialization.casesViewPage;
+    }
 
-
-    @Test()
-    @DisplayName("Update General Info Block")
-    @Tags({@Tag("BLOCKER"), @Tag("CASE")})
-
-
-
-    public void UpdateGeneralInfoBlock() {
-
-
-        page.navigate("https://crm.stage.travel-dev.com/cases/view/1c452f40fd53e20145380cc4a1827e9c");
-        siteLoginPage.logInUser();
-
-
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1747  Verify General Info update in the Case")
+    public void generalInfoUpdateInTheCase(){
+        createCaseManually.createNewCase();
+        updateGeneralInfoBlock();
+    }
+        public void updateGeneralInfoBlock() {
         casesViewPage
                 .clickBtnGeneralInfoUpdate()
                 .updateDepartmantToUpdateCaseForm("2")
@@ -41,12 +35,21 @@ public class UpdateGeneralInfoBlock{
                 .updateSubjectToUpdateCaseForm("updateSubjectAutoTest")
                 .updateDescriptionToUpdateCaseForm("updateDescriptionAutoTest")
                 .setCategoryToUpdateCaseForm("Add child to the existing flight")
-                .ClickBtnUpdateGeneralInfoBlock()
+                .clickBtnUpdateGeneralInfoBlock()
                 .assertGeneralInfoUpdate();
+    }
 
-
-
-
-
+    @Test
+    @Story("https://traveldev.atlassian.net/browse/TEST-1748  General Info update (negative scenario)")
+    public void generalInfoUpdateInTheCaseNegativeScenario() {
+        createCaseManually.createNewCase();
+        updateGeneralInfoNegativeScenario();
+    }
+    public void updateGeneralInfoNegativeScenario() {
+        casesViewPage.clickBtnGeneralInfoUpdate()
+                .updateBookingIDToUpdateCaseForm("**%%##")
+                .clickBtnUpdateGeneralInfoBlock()
+                .assertGeneralInfoUpdateNegativeScenario()
+                .clickBtnCloseUpdateCase();
     }
 }
