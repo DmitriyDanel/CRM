@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class LoginForm  {
     private BrowserInitialization browserInitialization;
-    private Page page; // Добавляем переменную page в класс
+    private Page page;
 
     @BeforeMethod
     public void setUp() {

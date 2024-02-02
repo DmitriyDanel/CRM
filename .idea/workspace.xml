@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="First version BrowserInitialization">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesViewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesViewPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseFlow/CaseFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseFlow/CaseFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LogOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LogOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +23,25 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2bnamvkFoWQqwQAWyNvBGi6UFGc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,21 +52,30 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.CaseFlow.caseFlow.executor": "Run",
+    "Gradle.CaseFlow.executor": "Run",
+    "Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor": "Run",
+    "Gradle.ClientInfoBlock.executor": "Run",
+    "Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor": "Run",
     "Gradle.CreateCaseManually.createNewCase.executor": "Run",
     "Gradle.CreateCaseManually.executor": "Run",
+    "Gradle.LoginForm.executor": "Run",
+    "Gradle.Tests in 'CRM.test'.executor": "Run",
+    "Gradle.Tests in 'dmitriy.daniel.CRM'.executor": "Run",
     "Gradle.UpdateGeneralInfoBlock.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "H:/JAVA/CRM_PlayWright",
+    "last_opened_file_path": "H:/JAVA/playwright",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.CreateCaseManually.createNewCase">
-    <configuration name="CreateCaseManually" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.CommunicationBlock.AgentCanSendSmsFromCase">
+    <configuration name="ClientInfoBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -64,7 +88,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually&quot;" />
+            <option value="&quot;dmitriy.daniel.CRM.clientInfoBlock.ClientInfoBlock&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -75,7 +99,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CreateCaseManually.createNewCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CommunicationBlock.AgentCanSendSmsFromCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -88,7 +112,55 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.createNewCase&quot;" />
+            <option value="&quot;dmitriy.daniel.CRM.communicationFromCase.CommunicationBlock.AgentCanSendSmsFromCase&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LoginForm" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.CRM.loginForm.LoginForm&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'dmitriy.daniel.CRM'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.CRM.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -125,9 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.CreateCaseManually.createNewCase" />
-        <item itemvalue="Gradle.CreateCaseManually" />
+        <item itemvalue="Gradle.CommunicationBlock.AgentCanSendSmsFromCase" />
+        <item itemvalue="Gradle.Tests in 'dmitriy.daniel.CRM'" />
         <item itemvalue="Gradle.UpdateGeneralInfoBlock" />
+        <item itemvalue="Gradle.LoginForm" />
+        <item itemvalue="Gradle.ClientInfoBlock" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706853522026</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First version BrowserInitialization">
+      <option name="closed" value="true" />
+      <created>1706856992707</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706856992707</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

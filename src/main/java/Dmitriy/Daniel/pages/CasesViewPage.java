@@ -115,7 +115,7 @@ public class CasesViewPage {
         this.formPhonNumber = page.locator("#casecommunicationform-c_phone_number_id");
         this.btnSendSMS = page.locator("#sms-input-box > div.btn-wrapper > button");
         this.SMSInternalNoteField = page.locator("#casepreviewsmsform-internalnote");
-        this.btnModalSendSMS = page.locator("#w9 > div.btn-wrapper.text-center > button");
+        this.btnModalSendSMS = page.locator("#w12 > div.btn-wrapper.text-center > button");
 
         //SendEmail________________________________________________________Communication
         this.formEmailTemplate = page.locator("#c_email_tpl_key");
@@ -261,7 +261,7 @@ public class CasesViewPage {
 
     public CasesViewPage assertAddEmailToClientInfoBlock() {
 //        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add********@mail.com")).click();
-        Assert.assertTrue(page.locator("#w6").textContent().contains("Add********@mail.com"));
+        Assert.assertTrue(page.locator("#w4 > tbody > tr:nth-child(3)").textContent().contains("Add********@mail.com"));
         return this;
     }
 

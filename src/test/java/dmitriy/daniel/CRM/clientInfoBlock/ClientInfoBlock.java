@@ -4,8 +4,7 @@ import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesViewPage;
 import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
 import io.qameta.allure.Story;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class ClientInfoBlock {
 
@@ -19,6 +18,11 @@ public class ClientInfoBlock {
         createCaseManually = new CreateCaseManually();
         createCaseManually.setUpBrowser();
         casesViewPage = browserInitialization.casesViewPage;
+    }
+
+    @AfterTest
+    public void tearDownAfterClass() {
+        browserInitialization.close();
     }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1742  'Update Client' with required and optional fields (+Locale and Marketing Country)")
