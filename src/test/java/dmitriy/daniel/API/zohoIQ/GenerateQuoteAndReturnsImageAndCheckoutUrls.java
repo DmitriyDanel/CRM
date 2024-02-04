@@ -18,9 +18,9 @@ import static org.junit.matchers.JUnitMatchers.everyItem;
 
 public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
 
-    String gid = "e69efcd2beb06079d9f9aa7b6c46c48f";
-    int quotesIds = 306958;
-    int chatId = 3820;
+    String gid = "0738bdc851c4a77d9b4554c2fc3f4acd";
+    int quotesIds = 322465;
+    int chatId = 3827;
 
     public void generateQuoteAndReturnsImage() {
 
@@ -30,7 +30,7 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
     public void successes() {
         // Створення екземпляра класу GenerateQuote
         GenerateQuote generateQuote = new GenerateQuote();
-        generateQuote.setChatId(3820);
+        generateQuote.setChatId(chatId);
         generateQuote.setQuotesIds(Arrays.asList(quotesIds));
 
         given()
