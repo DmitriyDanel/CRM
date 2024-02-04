@@ -8,7 +8,6 @@ import Dmitriy.Daniel.pages.SiteLoginPage;
 import com.microsoft.playwright.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 
 public class BrowserInitialization {

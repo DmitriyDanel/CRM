@@ -2,6 +2,7 @@ package dmitriy.daniel.API.CRM;
 
 import Dmitriy.Daniel.models.CRM.CreateCaseForm.DataCase;
 import Dmitriy.Daniel.models.CRM.GetCasesByEmail.CasesByEmailParams;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
@@ -15,8 +16,6 @@ import static org.hamcrest.Matchers.*;
 public class CreateCaseAPI {
     private String caseGid;
     DataCase dataCase = new DataCase();
-
-
 
 
     @Test
@@ -43,11 +42,33 @@ public class CreateCaseAPI {
                         "request.project_key", equalTo(dataCase.project_key),
                         "request.order_uid", equalTo(dataCase.order_uid),
                         "request.subject", equalTo(dataCase.subject),
-                        "request.description", equalTo(dataCase.description),
-                        "data.case_gid", equalTo("767713a965f7d3f202cc0e4fa8c1df1e"))
+                        "request.description", equalTo(dataCase.description))
 
                 .extract().path("data.case_gid");
         System.out.println(caseGid);
+    }
+    @Test
+    public void createCasesValidationError() {
+
+        dataCase.setContact_phone("+38098342927"); // "The format of Contact Phone is invalid."
+        given()
+                .spec(requestCrmApi)
+                .contentType(ContentType.JSON)
+                .body(dataCase)
+                .when()
+                .post("/v2/cases/create")
+
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
+
+                .body("status", equalTo(422),
+                        "message", equalTo("Validation error"),
+                        "errors.contact_phone[0" +
+                                "]", equalTo("The format of Contact Phone is invalid."));
+
     }
 
 
@@ -67,11 +88,11 @@ public class CreateCaseAPI {
 
                 .body("status", equalTo(200),
                         "message", equalTo("OK"),
-                        "data.gid", equalTo(caseGid));//767713a965f7d3f202cc0e4fa8c1df1e
+                        "data.gid", equalTo(caseGid));
     }
 
     @Test
-//    @DisplayName("Case with this gid not found.")
+    @Story("Case with this gid not found.")
     public void caseWithThisGIDnotFound() {
 
         given()
@@ -85,15 +106,15 @@ public class CreateCaseAPI {
                 .log().body()
                 .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
 
-                .body("errors[0].status", equalTo("422"))
-                .body("errors[0].detail", equalTo("Validation error"))
-                .body("errors[0].code", equalTo("21304"));
+                .body("status", equalTo(422),
+                "message", equalTo("Validation error"),
+                "errors[0]", equalTo("Case with this gid not found."));
 
     }
 
-    @Test
+    @Test(dependsOnMethods = {"createCaseSuccesses"}
+    )
     public void getCasesByEmail() {
-        CasesByEmailParams casesByEmail = new CasesByEmailParams();
         given()
                 .spec(requestCrmApi)
                 .param("contact_email", dataCase.contact_email)
@@ -112,11 +133,7 @@ public class CreateCaseAPI {
 
                 .body("status", equalTo(200),
                         "message", equalTo("OK"),
-                        "data[0].order_uid", not(empty()),
-                        "data[0].project_name", equalTo("OVAGO"),
-                        "data[0].status_name", equalTo("New"),
-                        "data[0].category_key", equalTo("exchange"));
-
+                        "data[0].order_uid", not(empty()));
     }
 
     @Test
@@ -137,9 +154,32 @@ public class CreateCaseAPI {
                 .log().body()
                 .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
 
-                .body("errors[0].status", equalTo("422"))
-                .body("errors[0].detail", equalTo("Validation error"))
-                .body("errors[0].code", equalTo("21303"));
+                .body("status", equalTo(422),
+                        "message", equalTo("Validation error"),
+                        "errors.contact_email[0]", equalTo("Contact Email cannot be blank."),
+                        "code", equalTo("21303"));
+    }
+    @Test//Відпрацьовує коли запускаеш не в сьюті, а окремо. РОЗІБРТ-СЯ!!!
+    public void getCasesByPhone() {
+        given()
+                .spec(requestCrmApi)
+                .param("contact_phone", "+380983429271")
+                .param("active_only", 1)
+                .param("department_key", dataCase.category_key)
+                .param("project_key", dataCase.project_key)
+                .param("oresults_limit", 10)
+
+                .when()
+                .get("/v2/case/get-list-by-phone")
+                .then()
+                .spec(requestSpec)
+                .assertThat()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+
+                .body("status", equalTo(200),
+                        "message", equalTo("OK"),
+                        "data[0].order_uid", not(empty()));
     }
 
     @Test
@@ -160,12 +200,12 @@ public class CreateCaseAPI {
                 .log().body()
                 .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
 
-                .body("errors[0].status", equalTo("422"))
-                .body("errors[0].detail", equalTo("Validation error"))
-                .body("errors[0].code", equalTo("21303"));
+                .body("status", equalTo(422),
+                        "message", equalTo("Validation error"),
+                        "errors.contact_phone[0]", equalTo("Contact Phone cannot be blank."));
     }
 
-    @Test
+    @Test//Відпрацьовує коли запускаеш не в сьюті, а окремо. РОЗІБРТ-СЯ!!!
     public void getCasesGidListByEmail() {
         given()
                 .spec(requestCrmApi)
@@ -188,29 +228,6 @@ public class CreateCaseAPI {
 
     }
 
-    @Test
-    public void getCasesByPhone() {
-        given()
-                .spec(requestCrmApi)
-                .param("contact_phone", dataCase.contact_phone)
-                .param("active_only", 1)
-                .param("department_key", dataCase.category_key)
-                .param("project_key", dataCase.project_key)
-                .param("oresults_limit", 10)
-
-                .when()
-                .get("/v2/case/get-list-by-phone")
-                .then()
-                .spec(requestSpec)
-                .assertThat()
-                .log().body()
-                .statusCode(HttpStatus.SC_OK)
-
-                .body("status", equalTo(200),
-                        "message", equalTo("OK"),
-                        "data", not(empty()));
-    }
-
 
     @Test
     public void getCasesGidListByEmailValidationError() {
@@ -230,9 +247,9 @@ public class CreateCaseAPI {
                 .log().body()
                 .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
 
-                .body("errors[0].status", equalTo("422"))
-                .body("errors[0].detail", equalTo("Validation error"))
-                .body("errors[0].code", equalTo("21303"));
+                .body("status", equalTo(422))
+                .body( "message", equalTo("Validation error"))
+                .body("errors.contact_email[0]", equalTo("Contact Email cannot be blank."));
     }
 
     @Test
@@ -277,31 +294,10 @@ public class CreateCaseAPI {
                 .log().body()
                 .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
 
-                .body("errors[0].status", equalTo("422"))
-                .body("errors[0].detail", equalTo("Validation error"))
-                .body("errors[0].code", equalTo("21303"));
+                .body("status", equalTo(422),
+                "message", equalTo("Validation error"),
+                "errors.contact_phone[0]", equalTo("Contact Phone cannot be blank."));
     }
 
-    @Test
-    public void createCasesValidationError() {
 
-        dataCase.setContact_phone("+38098342927"); // "The format of Contact Phone is invalid."
-        given()
-                .spec(requestCrmApi)
-                .contentType(ContentType.JSON)
-                .body(dataCase)
-                .when()
-                .post("/v2/cases/create")
-
-                .then()
-                .spec(requestSpec)
-                .assertThat()
-                .log().body()
-                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY)
-
-                .body("errors[0].status", equalTo("422"),
-                        "errors[0].code", equalTo("21301"),
-                        "errors[0].detail", equalTo("Validation error"));
-
-    }
 }

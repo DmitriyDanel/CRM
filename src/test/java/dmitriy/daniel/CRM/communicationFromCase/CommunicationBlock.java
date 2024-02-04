@@ -56,8 +56,3 @@ public class CommunicationBlock {
     }
 }
 
-//    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
-//    Page page = browserInitialization.getPage();
-//
-//    CasesViewPage casesViewPage = new CasesViewPage(page);
-//    CreateCaseManually createCaseManually = new CreateCaseManually();
