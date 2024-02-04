@@ -6,6 +6,5 @@ import java.util.List;
 
 @Data
 public class GenerateQuote {
-    private Integer chatId;
     private List<Integer> quotesIds;
 }

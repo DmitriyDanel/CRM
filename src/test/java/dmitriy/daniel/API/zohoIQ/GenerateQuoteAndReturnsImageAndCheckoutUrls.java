@@ -20,17 +20,10 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
 
     String gid = "0738bdc851c4a77d9b4554c2fc3f4acd";
     int quotesIds = 322465;
-    int chatId = 3827;
 
-    public void generateQuoteAndReturnsImage() {
-
-    }
-
-    @Test
+        @Test
     public void successes() {
-        // Створення екземпляра класу GenerateQuote
         GenerateQuote generateQuote = new GenerateQuote();
-        generateQuote.setChatId(chatId);
         generateQuote.setQuotesIds(Arrays.asList(quotesIds));
 
         given()
@@ -38,25 +31,24 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
                 .contentType(ContentType.JSON)
                 .body(generateQuote)
                 .when()
-                .get("leads/" + gid + "/communications/chat/quote-generate")
+                .post("leads/" + gid + "/flight-quotes/generate-capture")
                 .then()
                 .spec(requestSpec)
                 .assertThat()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK)
 
-                .body("data", notNullValue(), // Проверка наличия объекта data
+                .body("data", notNullValue(),
                         "data.captures.img", everyItem(notNullValue()), // Проверка, что у каждого объекта в массиве captures есть img
-                        "data.captures.img", everyItem(startsWith("https://comms.stage.travel-dev.com/imgs/tplc/")), // Проверка, что img начинается с https://
-                        "data.captures.checkoutUrl", everyItem(notNullValue()), // Проверка, что у каждого объекта есть checkoutUrl
-                        "data.captures.checkoutUrl", everyItem(containsString("checkout/quote/"))); // Проверка, что checkoutUrl содержит определенный паттерн;
+                        "data.captures.img", everyItem(startsWith("https://comms.stage.travel-dev.com/imgs/tplc/")),
+                        "data.captures.checkoutUrl", everyItem(startsWith
+                                ("https://ovago-hybrid-stage.travel-dev.com/checkout/quote/")));
     }
 
     @Test
     public void QuotesCannotBeBlank() {
 
         GenerateQuote generateQuote = new GenerateQuote();
-        generateQuote.setChatId(chatId);
         generateQuote.setQuotesIds(Arrays.asList());
 
         given()
@@ -64,7 +56,7 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
                 .contentType(ContentType.JSON)
                 .body(generateQuote)
                 .when()
-                .get("leads/" + gid + "/communications/chat/quote-generate")
+                .post("leads/" + gid + "/flight-quotes/generate-capture")
                 .then()
                 .spec(requestSpec)
                 .assertThat()
@@ -81,7 +73,6 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
     public void theNumberOfQuotesIdsShouldNotBeMoreThanFive() {
 
         GenerateQuote generateQuote = new GenerateQuote();
-        generateQuote.setChatId(chatId);
         generateQuote.setQuotesIds(Arrays.asList(quotesIds,quotesIds,quotesIds,quotesIds,quotesIds,quotesIds));
 
         given()
@@ -89,7 +80,7 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
                 .contentType(ContentType.JSON)
                 .body(generateQuote)
                 .when()
-                .get("leads/" + gid + "/communications/chat/quote-generate")
+                .post("leads/" + gid + "/flight-quotes/generate-capture")
                 .then()
                 .spec(requestSpec)
                 .assertThat()

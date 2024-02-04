@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="First version BrowserInitialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/BrowserInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/BrowserInitialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseStatusChange/ChangeStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseStatusChange/ChangeStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/communicationFromCase/CommunicationBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/communicationFromCase/CommunicationBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/generalInfoBlock/UpdateGeneralInfoBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/generalInfoBlock/UpdateGeneralInfoBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/zoho/GenerateQuote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/zoho/GenerateQuote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/zohoIQ/GenerateQuoteAndReturnsImageAndCheckoutUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/zohoIQ/GenerateQuoteAndReturnsImageAndCheckoutUrls.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +61,8 @@
     "Gradle.CreateCaseManually.createNewCase.executor": "Run",
     "Gradle.CreateCaseManually.executor": "Run",
     "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank.executor": "Run",
+    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.executor": "Run",
+    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes.executor": "Run",
     "Gradle.LoginForm.executor": "Run",
     "Gradle.Tests in 'CRM.test'.executor": "Run",
     "Gradle.Tests in 'dmitriy.daniel.CRM'.executor": "Run",
@@ -82,7 +79,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank">
+  <component name="RunManager" selected="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls">
     <configuration name="ClientInfoBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -107,7 +104,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CommunicationBlock.AgentCanSendSmsFromCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -120,31 +117,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.communicationFromCase.CommunicationBlock.AgentCanSendSmsFromCase&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="CreateCaseManually" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually&quot;" />
+            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -179,6 +152,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls.successes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in 'CRM.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -203,11 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls" />
+        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes" />
         <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank" />
         <item itemvalue="Gradle.Tests in 'CRM.test'" />
         <item itemvalue="Gradle.ClientInfoBlock" />
-        <item itemvalue="Gradle.CreateCaseManually" />
-        <item itemvalue="Gradle.CommunicationBlock.AgentCanSendSmsFromCase" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706886174021</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="First version BrowserInitialization">
+      <option name="closed" value="true" />
+      <created>1707067068293</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707067068293</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
