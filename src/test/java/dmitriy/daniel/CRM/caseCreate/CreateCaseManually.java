@@ -6,6 +6,7 @@ import Dmitriy.Daniel.pages.CasesViewPage;
 import Dmitriy.Daniel.pages.SiteLoginPage;
 import com.microsoft.playwright.Page;
 import io.qameta.allure.Story;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,8 +30,10 @@ public class CreateCaseManually {
         casesViewPage = browserInitialization.casesViewPage;
         siteLoginPage = browserInitialization.siteLoginPage;
     }
-
-
+    @AfterMethod
+    public void tearDownPage() {
+        browserInitialization.closePage();
+    }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-861 [CRM] Create Case - Manually - required fields")
     public void createNewCase() {

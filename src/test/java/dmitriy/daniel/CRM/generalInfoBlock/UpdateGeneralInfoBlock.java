@@ -4,6 +4,7 @@ import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesViewPage;
 import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
 import io.qameta.allure.Story;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,10 @@ public class  UpdateGeneralInfoBlock  {
         createCaseManually.setUpBrowser();
         casesViewPage = browserInitialization.casesViewPage;
     }
-
+    @AfterMethod
+    public void tearDownPage() {
+        browserInitialization.closePage();
+    }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1747  Verify General Info update in the Case")
     public void generalInfoUpdateInTheCase(){

@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="First version BrowserInitialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/BrowserInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/BrowserInitialization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseCreate/CreateCaseManually.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseStatusChange/ChangeStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/caseStatusChange/ChangeStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/clientInfoBlock/ClientInfoBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/communicationFromCase/CommunicationBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/communicationFromCase/CommunicationBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/generalInfoBlock/UpdateGeneralInfoBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/generalInfoBlock/UpdateGeneralInfoBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/CRM/loginForm/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,32 +56,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.CaseFlow.caseFlow.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CaseFlow.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ClientInfoBlock.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CreateCaseManually.createNewCase.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CreateCaseManually.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LoginForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'CRM.test'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'dmitriy.daniel.CRM'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UpdateGeneralInfoBlock.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mainCRM&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/JAVA/playwright&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.CaseFlow.caseFlow.executor": "Run",
+    "Gradle.CaseFlow.executor": "Run",
+    "Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor": "Run",
+    "Gradle.ClientInfoBlock.executor": "Run",
+    "Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor": "Run",
+    "Gradle.CreateCaseManually.createNewCase.executor": "Run",
+    "Gradle.CreateCaseManually.executor": "Run",
+    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank.executor": "Run",
+    "Gradle.LoginForm.executor": "Run",
+    "Gradle.Tests in 'CRM.test'.executor": "Run",
+    "Gradle.Tests in 'dmitriy.daniel.CRM'.executor": "Run",
+    "Gradle.UpdateGeneralInfoBlock.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "mainCRM",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "H:/JAVA/playwright",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Gradle.CommunicationBlock.AgentCanSendSmsFromCase">
+}]]></component>
+  <component name="RunManager" selected="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank">
     <configuration name="ClientInfoBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -123,7 +131,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="LoginForm" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CreateCaseManually" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -136,7 +144,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.loginForm.LoginForm&quot;" />
+            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -147,7 +155,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'dmitriy.daniel.CRM'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -160,7 +168,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.*&quot;" />
+            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -171,7 +179,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UpdateGeneralInfoBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'CRM.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -183,8 +191,6 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.generalInfoBlock.UpdateGeneralInfoBlock&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -197,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.CommunicationBlock.AgentCanSendSmsFromCase" />
-        <item itemvalue="Gradle.Tests in 'dmitriy.daniel.CRM'" />
-        <item itemvalue="Gradle.UpdateGeneralInfoBlock" />
-        <item itemvalue="Gradle.LoginForm" />
+        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank" />
+        <item itemvalue="Gradle.Tests in 'CRM.test'" />
         <item itemvalue="Gradle.ClientInfoBlock" />
+        <item itemvalue="Gradle.CreateCaseManually" />
+        <item itemvalue="Gradle.CommunicationBlock.AgentCanSendSmsFromCase" />
       </list>
     </recent_temporary>
   </component>

@@ -55,6 +55,10 @@ public class BrowserInitialization {
         browser.close();
         playwright.close();
     }
+    @AfterMethod
+    public void closePage() {
+        page.close();
+    }
 }
 
 

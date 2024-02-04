@@ -4,6 +4,7 @@ import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesViewPage;
 import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
 import io.qameta.allure.Story;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,10 @@ public class CommunicationBlock {
         createCaseManually = new CreateCaseManually();
         createCaseManually.setUpBrowser();
         casesViewPage = browserInitialization.casesViewPage;
+    }
+    @AfterMethod
+    public void tearDownPage() {
+        browserInitialization.closePage();
     }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1359 Verify that agent can send SMS from Case")

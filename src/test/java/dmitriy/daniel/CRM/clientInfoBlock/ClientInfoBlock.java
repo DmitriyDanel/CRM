@@ -20,9 +20,9 @@ public class ClientInfoBlock {
         casesViewPage = browserInitialization.casesViewPage;
     }
 
-    @AfterTest
-    public void tearDownAfterClass() {
-        browserInitialization.close();
+    @AfterMethod
+    public void tearDownPage() {
+        browserInitialization.closePage();
     }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1742  'Update Client' with required and optional fields (+Locale and Marketing Country)")
