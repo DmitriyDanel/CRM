@@ -41,8 +41,7 @@ public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
                 .body("data", notNullValue(),
                         "data.captures.img", everyItem(notNullValue()), // Проверка, что у каждого объекта в массиве captures есть img
                         "data.captures.img", everyItem(startsWith("https://comms.stage.travel-dev.com/imgs/tplc/")),
-                        "data.captures.checkoutUrl", everyItem(startsWith
-                                ("https://ovago-hybrid-stage.travel-dev.com/checkout/quote/")));
+                        "data.captures.checkoutUrl", everyItem(startsWith( "https://flights.ovago.hybrid.stage.travel-dev.com/checkout/quote/")));
     }
 
     @Test
