@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CreateCaseForm {
-
     @Data
     public static class DataCase {
 
@@ -19,5 +18,4 @@ public class CreateCaseForm {
         public String description = "Description Auto testing DmitriyD";
         public String project_key = "ovago";
     }
-
 }
