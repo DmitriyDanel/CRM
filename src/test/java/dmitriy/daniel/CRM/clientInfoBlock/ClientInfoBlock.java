@@ -24,6 +24,7 @@ public class ClientInfoBlock {
     public void tearDownPage() {
         browserInitialization.closePage();
     }
+
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1742  'Update Client' with required and optional fields (+Locale and Marketing Country)")
     public void updateClientWithRequiredAndOptionalFieldsLocaleAndMarketing() {
@@ -63,13 +64,11 @@ public class ClientInfoBlock {
 
     }
 
-
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1736  'Update Client' with only required field - valid data")
     public void updateClientWithOnlyRequiredFields() {
         createCaseManually.createNewCase();
         updateClientOnlyFirstNameFields();
-
     }
 
     public void updateClientOnlyFirstNameFields() {
@@ -80,7 +79,6 @@ public class ClientInfoBlock {
                 .assertUpdateClientOnlyFirstNameFields();
 
     }
-
 
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-1744  Adding email (valid data)")
@@ -112,7 +110,6 @@ public class ClientInfoBlock {
                 .btnAddEmailInAddEmailForm()
                 .assertAddEmailToClientInfoBlockNegativeScenario()
                 .reload();
-
     }
 
     @Test
@@ -144,17 +141,6 @@ public class ClientInfoBlock {
                 .addPhoneInForm("1888888888")
                 .clickInModalBtnAddPhone()
                 .assertCaseAddPhoneToClientInfoBlockNegativeScenario();
-
-
     }
-
 }
-
-
-//    BrowserInitialization browserInitialization = BrowserInitialization.getInstance();
-//    Page page = browserInitialization.getPage();
-//
-//    CasesViewPage casesViewPage = new CasesViewPage(page);
-//    CreateCaseManually createCaseManually = new CreateCaseManually();
-
 
