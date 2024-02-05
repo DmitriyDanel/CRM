@@ -159,7 +159,7 @@ public class CreateCaseAPI {
                         "errors.contact_email[0]", equalTo("Contact Email cannot be blank."),
                         "code", equalTo("21303"));
     }
-    @Test//Відпрацьовує коли запускаеш не в сьюті, а окремо. РОЗІБРТ-СЯ!!!
+    @Test
     public void getCasesByPhone() {
         given()
                 .spec(requestCrmApi)
@@ -205,7 +205,7 @@ public class CreateCaseAPI {
                         "errors.contact_phone[0]", equalTo("Contact Phone cannot be blank."));
     }
 
-    @Test//Відпрацьовує коли запускаеш не в сьюті, а окремо. РОЗІБРТ-СЯ!!!
+    @Test
     public void getCasesGidListByEmail() {
         given()
                 .spec(requestCrmApi)
