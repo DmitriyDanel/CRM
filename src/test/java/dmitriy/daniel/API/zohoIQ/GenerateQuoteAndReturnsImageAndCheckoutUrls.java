@@ -18,8 +18,8 @@ import static org.junit.matchers.JUnitMatchers.everyItem;
 
 public class GenerateQuoteAndReturnsImageAndCheckoutUrls {
 
-    String gid = "0738bdc851c4a77d9b4554c2fc3f4acd";
-    int quotesIds = 322465;
+    String gid = "87c9f8c3707060fa58bdea0deaf87eb0";
+    int quotesIds = 323612;
 
         @Test
     public void successes() {
