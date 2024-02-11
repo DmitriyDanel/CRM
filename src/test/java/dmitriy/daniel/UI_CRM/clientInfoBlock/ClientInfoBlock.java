@@ -1,8 +1,8 @@
-package dmitriy.daniel.CRM.clientInfoBlock;
+package dmitriy.daniel.UI_CRM.clientInfoBlock;
 
 import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesViewPage;
-import dmitriy.daniel.CRM.caseCreate.CreateCaseManually;
+import dmitriy.daniel.UI_CRM.caseCreate.CreateCaseManually;
 import io.qameta.allure.Story;
 import org.testng.annotations.*;
 

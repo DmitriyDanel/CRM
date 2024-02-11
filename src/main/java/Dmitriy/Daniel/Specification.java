@@ -15,7 +15,7 @@ public class Specification {
             .log().all();
 
     public static RequestSpecification requestCrmStage = with()
-            .auth().oauth2("1bab42fad165f12c69d6786c27abf087")
+            .auth().oauth2(CRM_USER_TOKEN_STAGE)
             .baseUri(CRM_URL_STAGE)
             .basePath("/api/v1")
             .log().all();

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="First version BrowserInitialization">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/PropertiesReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/crm.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/zoho/GenerateQuote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/zoho/GenerateQuote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/zohoIQ/GenerateQuoteAndReturnsImageAndCheckoutUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/zohoIQ/GenerateQuoteAndReturnsImageAndCheckoutUrls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/constants/CrmConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/constants/CrmConstants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +30,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -40,9 +48,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2bnamvkFoWQqwQAWyNvBGi6UFGc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,8 +66,10 @@
     "Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor": "Run",
     "Gradle.ClientInfoBlock.executor": "Run",
     "Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor": "Run",
+    "Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty.executor": "Run",
     "Gradle.CreateCaseManually.createNewCase.executor": "Run",
     "Gradle.CreateCaseManually.executor": "Run",
+    "Gradle.CreateCaseManually.newCaseCreateWithoutEmail.executor": "Run",
     "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank.executor": "Run",
     "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.executor": "Run",
     "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes.executor": "Run",
@@ -72,15 +82,24 @@
     "git-widget-placeholder": "mainCRM",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "H:/JAVA/playwright",
+    "last_opened_file_path": "C:/Users/Danel/IdeaProjects/CRM_NEW/src/main",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls">
-    <configuration name="ClientInfoBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Danel\IdeaProjects\CRM_NEW\src\main" />
+      <recent name="C:\Users\Danel\IdeaProjects\CRM_NEW\src\main\java\Dmitriy\Daniel" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty">
+    <configuration name="CreateCaseManually" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -93,7 +112,79 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.clientInfoBlock.ClientInfoBlock&quot;" />
+            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CreateCaseManually.createNewCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.createNewCase&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CreateCaseManually.newCaseCreateWithoutEmail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.newCaseCreateWithoutEmail&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -128,83 +219,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls.successes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'CRM.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty" />
+        <item itemvalue="Gradle.CreateCaseManually.newCaseCreateWithoutEmail" />
+        <item itemvalue="Gradle.CreateCaseManually.createNewCase" />
+        <item itemvalue="Gradle.CreateCaseManually" />
         <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls" />
-        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes" />
-        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank" />
-        <item itemvalue="Gradle.Tests in 'CRM.test'" />
-        <item itemvalue="Gradle.ClientInfoBlock" />
       </list>
     </recent_temporary>
   </component>

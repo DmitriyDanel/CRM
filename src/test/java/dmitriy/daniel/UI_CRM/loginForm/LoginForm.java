@@ -1,4 +1,4 @@
-package dmitriy.daniel.CRM.loginForm;
+package dmitriy.daniel.UI_CRM.loginForm;
 
 import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.SiteLoginPage;
@@ -6,6 +6,8 @@ import com.microsoft.playwright.Page;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static Dmitriy.Daniel.constants.CrmConstants.CRM_URL_STAGE;
 
 public class LoginForm  {
     private BrowserInitialization browserInitialization;
@@ -22,7 +24,7 @@ public class LoginForm  {
 
         SiteLoginPage siteLoginPage = new SiteLoginPage(page);
 
-        page.navigate("https://crm.stage.travel-dev.com");
+        page.navigate(CRM_URL_STAGE);
 
         siteLoginPage
                 .setUserName()

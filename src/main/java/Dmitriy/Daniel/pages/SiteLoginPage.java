@@ -3,6 +3,9 @@ package Dmitriy.Daniel.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
+import static Dmitriy.Daniel.constants.CrmConstants.PASSWORD;
+import static Dmitriy.Daniel.constants.CrmConstants.USERNAME;
+
 public class SiteLoginPage {
 
     private final Page page;
@@ -20,11 +23,11 @@ public class SiteLoginPage {
     }
 
     public SiteLoginPage setUserName() {
-        UserName.fill("dmitriy.daniel.admin");
+        UserName.fill(USERNAME);
         return this;
     }
     public SiteLoginPage setPassword() {
-        Password.fill("0910BIGti/*-+");
+        Password.fill(PASSWORD);
         return this ;
     }
 

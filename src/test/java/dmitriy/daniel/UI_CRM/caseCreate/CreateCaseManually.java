@@ -1,4 +1,4 @@
-package dmitriy.daniel.CRM.caseCreate;
+package dmitriy.daniel.UI_CRM.caseCreate;
 
 import Dmitriy.Daniel.config.BrowserInitialization;
 import Dmitriy.Daniel.pages.CasesCreatePage;
@@ -7,7 +7,6 @@ import Dmitriy.Daniel.pages.SiteLoginPage;
 import com.microsoft.playwright.Page;
 import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
