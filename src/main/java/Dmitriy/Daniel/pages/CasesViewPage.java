@@ -199,6 +199,7 @@ public class CasesViewPage {
     }
 
     public CasesViewPage assertNewCaseCreate() {
+        page.waitForTimeout(3000);
         page.reload();
         Assert.assertTrue(feldStatusNew.textContent().contains("New"));
         Assert.assertTrue(fieldProject.textContent().contains("OVAGO"));
@@ -362,7 +363,6 @@ public class CasesViewPage {
 
     public CasesViewPage btnAddEmailInAddEmailForm() {
         inModalBtnAddEmail.click();
-//        Selenide.sleep(1500);
         page.waitForTimeout(2000);
         return this;
     }
@@ -537,8 +537,7 @@ public class CasesViewPage {
     public CasesViewPage setCategoryToUpdateCaseForm(String value) {
         inputCategoryToUpdateCaseForm.click();
         page.locator("#select2-categoryId-container");
-//        Selenide.sleep(2000);
-        page.waitForTimeout(5000);
+        page.waitForTimeout(3000);
         page.getByRole(AriaRole.SEARCHBOX).fill(value);
         page.getByRole(AriaRole.SEARCHBOX).press("Enter");
         return this;
@@ -561,8 +560,7 @@ public class CasesViewPage {
 
     public CasesViewPage clickBtnUpdateGeneralInfoBlock() {
         btnUpdateGeneralInfoBlock.click();
-//        Selenide.sleep(5000);
-        page.waitForTimeout(5000);
+        page.waitForTimeout(3000);
         return this;
     }
 

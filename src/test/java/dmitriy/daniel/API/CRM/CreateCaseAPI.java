@@ -66,8 +66,7 @@ public class CreateCaseAPI {
 
                 .body("status", equalTo(422),
                         "message", equalTo("Validation error"),
-                        "errors.contact_phone[0" +
-                                "]", equalTo("The format of Contact Phone is invalid."));
+                        "errors.contact_phone[0]", equalTo("The format of Contact Phone is invalid."));
 
     }
 

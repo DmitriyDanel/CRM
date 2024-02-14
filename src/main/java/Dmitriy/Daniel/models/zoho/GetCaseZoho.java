@@ -1,11 +1,11 @@
-package Dmitriy.Daniel.models.CRM;
+package Dmitriy.Daniel.models.zoho;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class GetCase {
+public class GetCaseZoho {
     public String caseGID = "";
 
     @Data

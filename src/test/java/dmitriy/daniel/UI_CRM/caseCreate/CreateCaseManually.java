@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 
 import static Dmitriy.Daniel.constants.CrmConstants.CRM_URL_STAGE;
 
-public class CreateCaseManually {
+public class
+CreateCaseManually {
     private BrowserInitialization browserInitialization;
     private Page page;
     private CasesCreatePage casesCreatePage;

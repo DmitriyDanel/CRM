@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="First version BrowserInitialization">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/config/PropertiesReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/crm.properties" afterDir="false" />
+    <list default="true" id="b1e0746b-6233-4db3-82ce-8855a21b3805" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CreateCaseApiPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/constants/CrmConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/constants/CrmConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/CRM/CreateCaseForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/CRM/CreateCaseForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/CRM/GetCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/zoho/GetCaseZoho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/CRM/GetCasesByEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/models/CRM/GetCasesByEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesCreatePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesCreatePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesViewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/pages/CasesViewPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/CRM/CreateCaseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/CRM/CreateCaseAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/UI_CRM/caseCreate/CreateCaseManually.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dmitriy/daniel/UI_CRM/caseCreate/CreateCaseManually.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +33,17 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CRM" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -38,9 +55,22 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="mainCRM_NEW" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="mainCRM" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,9 +78,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2bnamvkFoWQqwQAWyNvBGi6UFGc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -59,46 +89,78 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.CaseFlow.caseFlow.executor": "Run",
-    "Gradle.CaseFlow.executor": "Run",
-    "Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor": "Run",
-    "Gradle.ClientInfoBlock.executor": "Run",
-    "Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor": "Run",
-    "Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty.executor": "Run",
-    "Gradle.CreateCaseManually.createNewCase.executor": "Run",
-    "Gradle.CreateCaseManually.executor": "Run",
-    "Gradle.CreateCaseManually.newCaseCreateWithoutEmail.executor": "Run",
-    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank.executor": "Run",
-    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.executor": "Run",
-    "Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes.executor": "Run",
-    "Gradle.LoginForm.executor": "Run",
-    "Gradle.Tests in 'CRM.test'.executor": "Run",
-    "Gradle.Tests in 'dmitriy.daniel.CRM'.executor": "Run",
-    "Gradle.UpdateGeneralInfoBlock.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "mainCRM",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Danel/IdeaProjects/CRM_NEW/src/main",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.CaseFlow.caseFlow.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CaseFlow.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientInfoBlock.addEmailToClientInfoBlockValidData.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ClientInfoBlock.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CommunicationBlock.AgentCanSendSmsFromCase.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseAPI.createCaseSuccesses.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseAPI.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseAPI.getCaseSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.createNewCase.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.newCaseCreateWithoutEmail (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.newCaseCreateWithoutEmail.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateCaseManually.newCaseCreateWithoutPhone.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CreateLeadWithChat.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.QuotesCannotBeBlank.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls.successes.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LeadList.seccuss.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LoginForm.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LoginForm.logInUser.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'CRM.test'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'dmitriy.daniel.CRM'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UpdateGeneralInfoBlock.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mainCRM__NEW&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Danel/IdeaProjects/CRM_NEW/src/main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;H:/JAVA/CRM/src/main/java/Dmitriy/Daniel/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Danel\IdeaProjects\CRM_NEW\src\main" />
       <recent name="C:\Users\Danel\IdeaProjects\CRM_NEW\src\main\java\Dmitriy\Daniel" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty">
+  <component name="RunManager" selected="Gradle.CreateCaseManually.createNewCase">
+    <configuration name="CreateCaseAPI.createCaseSuccesses" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;dmitriy.daniel.API.CRM.CreateCaseAPI.createCaseSuccesses&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="CreateCaseManually" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -112,31 +174,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty&quot;" />
+            <option value="&quot;dmitriy.daniel.UI_CRM.caseCreate.CreateCaseManually&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -160,7 +198,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.createNewCase&quot;" />
+            <option value="&quot;dmitriy.daniel.UI_CRM.caseCreate.CreateCaseManually.createNewCase&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -171,7 +209,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CreateCaseManually.newCaseCreateWithoutEmail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CreateCaseManually.newCaseCreateWithoutPhone" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -184,7 +222,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.CRM.caseCreate.CreateCaseManually.newCaseCreateWithoutEmail&quot;" />
+            <option value="&quot;dmitriy.daniel.UI_CRM.caseCreate.CreateCaseManually.newCaseCreateWithoutPhone&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -195,7 +233,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="GenerateQuoteAndReturnsImageAndCheckoutUrls" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LeadList.seccuss" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -208,7 +246,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;dmitriy.daniel.API.zohoIQ.GenerateQuoteAndReturnsImageAndCheckoutUrls&quot;" />
+            <option value="&quot;dmitriy.daniel.API.zohoIQ.LeadList.seccuss&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -221,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.CreateCaseManually.ValidationErrorMessageWhenEmailAndPhoneFieldsAreEmpty" />
-        <item itemvalue="Gradle.CreateCaseManually.newCaseCreateWithoutEmail" />
         <item itemvalue="Gradle.CreateCaseManually.createNewCase" />
+        <item itemvalue="Gradle.LeadList.seccuss" />
+        <item itemvalue="Gradle.CreateCaseAPI.createCaseSuccesses" />
         <item itemvalue="Gradle.CreateCaseManually" />
-        <item itemvalue="Gradle.GenerateQuoteAndReturnsImageAndCheckoutUrls" />
+        <item itemvalue="Gradle.CreateCaseManually.newCaseCreateWithoutPhone" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707067068293</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="First version BrowserInitialization">
+      <option name="closed" value="true" />
+      <created>1707666253240</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707666253240</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,6 +360,20 @@
           <url>file://$PROJECT_DIR$/src/main/java/Dmitriy/Daniel/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/zohoIQ/CreateLeadWithChat.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/dmitriy/daniel/API/CRM/CreateCaseAPI.java</url>
+          <line>74</line>
+          <properties class="dmitriy.daniel.API.CRM.CreateCaseAPI" method="getCaseSuccess">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

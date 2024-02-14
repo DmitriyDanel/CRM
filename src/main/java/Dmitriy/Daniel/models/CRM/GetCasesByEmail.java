@@ -6,15 +6,20 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class GetCasesByEmail {
-
     @Data
     public static class CasesByEmailParams {
+        public String contact_email;
+        public int active_only;
+        public String department_key;
+        public String project_key;
+        public int results_limit;
 
-        public String contact_email = "danelukdv@gmail.com";
-        public int active_only = 1;
-        public String department_key = "support";
-        public String project_key = "ovago";
-        public int results_limit = 10;
+        public CasesByEmailParams() {
+            contact_email = "danelukdv@gmail.com";
+            active_only = 1;
+            department_key = "support";
+            project_key = "ovago";
+            results_limit = 10;
+        }
     }
-
 }

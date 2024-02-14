@@ -64,10 +64,10 @@ public class CasesCreatePage {
     }
 
     public CasesCreatePage selectionWebFormCategoryID(String value) {
-        page.waitForTimeout(1500);
+        page.waitForTimeout(2000);
         selectionCategoryID.click();
         page.getByRole(AriaRole.SEARCHBOX).type(value);
-        page.waitForTimeout(1500);
+        page.waitForTimeout(1000);
         page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName(value)).press("Enter");
         return this;
     }
