@@ -1,5 +1,5 @@
+//version4
 
-//VERSION3
 package Dmitriy.Daniel.config;
 
 import Dmitriy.Daniel.pages.CasesCreatePage;
@@ -12,30 +12,17 @@ import org.testng.annotations.BeforeSuite;
 
 public class BrowserInitialization {
     private static BrowserInitialization instance;
+    private final Browser browser;
+    private final Playwright playwright;
+    public final Page page;
 
     public CasesViewPage casesViewPage;
     public CasesCreatePage casesCreatePage;
     public SiteLoginPage siteLoginPage;
 
-    public Page page;
-    protected Playwright playwright;
-    protected Browser browser;
-
-
     private BrowserInitialization() {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-    }
-
-    public static BrowserInitialization getInstance() {
-        if (instance == null) {
-            instance = new BrowserInitialization();
-        }
-        return instance;
-    }
-
-    @BeforeSuite
-    public void setup() {
         BrowserContext browserContext = browser.newContext(new Browser.NewContextOptions());
         page = browserContext.newPage();
         page.setViewportSize(1920, 1080);
@@ -45,21 +32,94 @@ public class BrowserInitialization {
         siteLoginPage = new SiteLoginPage(page);
     }
 
+    public static BrowserInitialization getInstance() {
+        if (instance == null) {
+            synchronized (BrowserInitialization.class) {
+                if (instance == null) {
+                    instance = new BrowserInitialization();
+                }
+            }
+        }
+        return instance;
+    }
+
+    @BeforeSuite
+    public void setup() {
+        // Setup code here, but it's already done in the constructor
+    }
+
     @AfterSuite
     public void close() {
         page.context().close();
-    }
-
-    @AfterMethod
-    public void closeBrowser() {
         browser.close();
         playwright.close();
     }
-    @AfterMethod
-    public void closePage() {
-        page.close();
-    }
+
+    // Removed @AfterMethod for closing browser and page, as it's already handled in @AfterSuite
 }
+
+
+//VERSION3
+//package Dmitriy.Daniel.config;
+//
+//import Dmitriy.Daniel.pages.CasesCreatePage;
+//import Dmitriy.Daniel.pages.CasesViewPage;
+//import Dmitriy.Daniel.pages.SiteLoginPage;
+//import com.microsoft.playwright.*;
+//import org.testng.annotations.AfterMethod;
+//import org.testng.annotations.AfterSuite;
+//import org.testng.annotations.BeforeSuite;
+//
+//public class BrowserInitialization {
+//    private static BrowserInitialization instance;
+//
+//    public CasesViewPage casesViewPage;
+//    public CasesCreatePage casesCreatePage;
+//    public SiteLoginPage siteLoginPage;
+//
+//    public Page page;
+//    protected Playwright playwright;
+//    protected Browser browser;
+//
+//
+//    private BrowserInitialization() {
+//        playwright = Playwright.create();
+//        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+//    }
+//
+//    public static BrowserInitialization getInstance() {
+//        if (instance == null) {
+//            instance = new BrowserInitialization();
+//        }
+//        return instance;
+//    }
+//
+//    @BeforeSuite
+//    public void setup() {
+//        BrowserContext browserContext = browser.newContext(new Browser.NewContextOptions());
+//        page = browserContext.newPage();
+//        page.setViewportSize(1920, 1080);
+//
+//        casesViewPage = new CasesViewPage(page);
+//        casesCreatePage = new CasesCreatePage(page);
+//        siteLoginPage = new SiteLoginPage(page);
+//    }
+//
+//    @AfterSuite
+//    public void close() {
+//        page.context().close();
+//    }
+//
+//    @AfterMethod
+//    public void closeBrowser() {
+//        browser.close();
+//        playwright.close();
+//    }
+//    @AfterMethod
+//    public void closePage() {
+//        page.close();
+//    }
+//}
 
 
 

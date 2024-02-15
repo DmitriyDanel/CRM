@@ -12,8 +12,7 @@ import org.testng.annotations.Test;
 
 import static Dmitriy.Daniel.constants.CrmConstants.CRM_URL_STAGE;
 
-public class
-CreateCaseManually {
+public class CreateCaseManually {
     private BrowserInitialization browserInitialization;
     private Page page;
     private CasesCreatePage casesCreatePage;
@@ -21,18 +20,17 @@ CreateCaseManually {
     private SiteLoginPage siteLoginPage;
 
     @BeforeMethod
-    public void setUpBrowser() {
+    public void setUp() {
         browserInitialization = BrowserInitialization.getInstance();
-        browserInitialization.setup();
         page = browserInitialization.page;
-
         casesCreatePage = browserInitialization.casesCreatePage;
         casesViewPage = browserInitialization.casesViewPage;
         siteLoginPage = browserInitialization.siteLoginPage;
     }
+
     @AfterMethod
-    public void tearDownPage() {
-        browserInitialization.closePage();
+    public void tearDown() {
+        // You can handle cleanup here if needed
     }
     @Test
     @Story("https://traveldev.atlassian.net/browse/TEST-861 [CRM] Create Case - Manually - required fields")
